@@ -124,16 +124,18 @@ export default class baseManager {
      * Robot
      */
     initRobot() {
+        // 底座
         const D1 = new THREE.Mesh(
             new THREE.CylinderGeometry(1, 1, 0.5, 32),
             new THREE.MeshStandardMaterial({
-                color: "#E45826",
+                color: "orange",
                 metalness: 0,
                 roughness: 0.5,
             })
         );
         this.gui.add(D1.rotation, "y").min(-Math.PI).max(Math.PI).step(0.01);
 
+        // 关节1(由下向上的第一个黑球)
         const D2 = new THREE.Mesh(
             new THREE.SphereGeometry(0.5, 32, 16),
             new THREE.MeshStandardMaterial({
@@ -147,6 +149,7 @@ export default class baseManager {
         D1.add(D2);
         this.gui.add(D2.rotation, "z").min(-Math.PI).max(Math.PI).step(0.01);
 
+        // 关节1-->关节2 的连接骨骼1
         const B1 = new THREE.Mesh(
             new THREE.BoxGeometry(0.5, 3, 0.5),
             new THREE.MeshStandardMaterial({
@@ -159,6 +162,7 @@ export default class baseManager {
         B1.rotation.z = Math.PI / 4;
         D2.add(B1);
 
+        // 关节2 (由下向上的第二个黑球)
         const D3 = new THREE.Mesh(
             new THREE.SphereGeometry(0.5, 32, 16),
             new THREE.MeshStandardMaterial({
@@ -172,6 +176,7 @@ export default class baseManager {
         B1.add(D3);
         this.gui.add(D3.rotation, "z").min(-Math.PI).max(Math.PI).step(0.01);
 
+        // 关节2-->关节3 的连接骨骼2
         const B2 = new THREE.Mesh(
             new THREE.BoxGeometry(0.5, 3, 0.5),
             new THREE.MeshStandardMaterial({
@@ -184,6 +189,7 @@ export default class baseManager {
         B2.rotation.z = -Math.PI / 2;
         D3.add(B2);
 
+        // 关节3 (由下向上的第三个黑球)
         const D4 = new THREE.Mesh(
             new THREE.SphereGeometry(0.5, 32, 16),
             new THREE.MeshStandardMaterial({
@@ -197,6 +203,7 @@ export default class baseManager {
         B2.add(D4);
         this.gui.add(D4.rotation, "z").min(-Math.PI).max(Math.PI).step(0.01);
 
+        // 关节3-->关节4 的连接骨骼3
         const B3 = new THREE.Mesh(
             new THREE.BoxGeometry(0.5, 3, 0.5),
             new THREE.MeshStandardMaterial({
@@ -210,6 +217,7 @@ export default class baseManager {
         B3.rotation.z = -Math.PI / 4;
         D4.add(B3);
 
+        // 关节4(由下向上的第四个黑球)
         const D5 = new THREE.Mesh(
             new THREE.SphereGeometry(0.5, 32, 16),
             new THREE.MeshStandardMaterial({
@@ -223,6 +231,7 @@ export default class baseManager {
         B3.add(D5);
         this.gui.add(D5.rotation, "z").min(-Math.PI).max(Math.PI).step(0.01);
 
+        // 关节4-->关节5 的连接骨骼4
         const B4 = new THREE.Mesh(
             new THREE.BoxGeometry(0.5, 1, 0.5),
             new THREE.MeshStandardMaterial({
@@ -235,6 +244,19 @@ export default class baseManager {
         B4.rotation.z = -Math.PI / 2;
         D5.add(B4);
 
+        // 关节5(由下向上的第五个黑球)
+        const D6 = new THREE.Mesh(
+            new THREE.SphereGeometry(0.5, 32,16),
+            new THREE.MeshStandardMaterial({
+                color: '#1B1A17',
+                metalness: 0,
+                roughness: 0.5,
+            })
+        )
+        D6.position.set(0, 0.75, 0)
+        B4.add(D6)
+
+
         D1.castShadow = true;
         D2.castShadow = true;
         B1.castShadow = true;
@@ -244,6 +266,7 @@ export default class baseManager {
         B3.castShadow = true;
         D5.castShadow = true;
         B4.castShadow = true;
+        D6.castShadow = true
 
 
         this.scene.add(D1);

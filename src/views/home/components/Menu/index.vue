@@ -6,7 +6,8 @@
         <el-switch v-model="mouseValue" @change="switchChange" />
       </div>
       <div class="slider-item">
-        <span class="demonstration">关节一（绕Y轴旋转）</span>
+        <p class="demonstration">关节一</p>
+        <span class="demonstration">绕Y轴旋转</span>
         <el-slider
           v-model="value1"
           show-input
@@ -15,20 +16,18 @@
           :step="0.01"
           @input="sliderInput($event, 'D1', 'y')"
         />
-      </div>
-      <div class="slider-item">
-        <span class="demonstration">关节二（绕Z轴旋转）</span>
+        <span class="demonstration">绕Z轴旋转</span>
         <el-slider
-          v-model="value2"
-          show-input
-          :min="min"
-          :max="max"
-          :step="0.01"
-          @input="sliderInput($event, 'D2', 'z')"
+            v-model="value2"
+            show-input
+            :min="min"
+            :max="max"
+            :step="0.01"
+            @input="sliderInput($event, 'D2', 'z')"
         />
       </div>
       <div class="slider-item">
-        <span class="demonstration">关节三（绕Z轴旋转）</span>
+        <span class="demonstration">关节二（绕Z轴旋转）</span>
         <el-slider
           v-model="value3"
           show-input
@@ -39,7 +38,7 @@
         />
       </div>
       <div class="slider-item">
-        <span class="demonstration">关节四（绕Z轴旋转）</span>
+        <span class="demonstration">关节三（绕Z轴旋转）</span>
         <el-slider
           v-model="value4"
           show-input
@@ -50,7 +49,7 @@
         />
       </div>
       <div class="slider-item">
-        <p class="demonstration">关节五</p>
+        <p class="demonstration">关节四</p>
         <span class="demonstration">绕x轴旋转</span>
         <el-slider
           v-model="value5_1"
@@ -116,6 +115,8 @@ const switchChange = (e) => {
 }
 .slider-item {
   margin: 20px 0;
+  padding: 10px;
+  border-top: dashed 1px #111;
 }
 .demonstration {
   margin: 0 10px 10px 0;
